@@ -16,6 +16,7 @@
     "moment": "^2.24.0",
     "morgan": "~1.9.1",
     "pi-camera-connect": "^0.2.0",
+    "sharp": "^0.24.1",
     "socket.io": "^2.3.0"
   }
 }

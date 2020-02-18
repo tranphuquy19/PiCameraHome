@@ -1,12 +1,18 @@
-var express = require("express");
-var router = express.Router();
-var { getImage, getVideo } = require("../libs/camUtil");
+const express = require("express");
+const router = express.Router();
+const { storePath } = require("../config");
+const { getImage, getVideo } = require("../libs/camUtil");
+const { getAllFiles, getFileInfo } = require("../libs/fileUtil");
 
 module.exports = io => {
   io.on("connection", socket => {
-    io.emit("serverSendDataObject", {
-      command: "test",
-      payload: 123
+    const allFiles = getAllFiles(storePath);
+    const payload = allFiles.map(file => {
+      return getFileInfo(file);
+    });
+    socket.emit("serverSendDataObject", {
+      command: "SEND_FILES",
+      payload
     });
 
     socket.on("clientSendDataObject", async obj => {

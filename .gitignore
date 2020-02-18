@@ -110,3 +110,5 @@ dist
 public/photos
 
 public/videos
+
+public/stored/*.jpg
