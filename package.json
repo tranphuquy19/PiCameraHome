@@ -13,6 +13,7 @@
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
+    "pi-camera-connect": "^0.2.0",
     "socket.io": "^2.3.0"
   }
 }
