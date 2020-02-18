@@ -2,17 +2,19 @@ const { StillCamera } = require("pi-camera-connect");
 const { StreamCamera, Codec } = require("pi-camera-connect");
 const fs = require("fs");
 const path = require("path");
-const {imagePathDir, videoPathDir} = require('../config');
+const fileUtil = require("./fileUtil");
+const { storePath } = require("../config");
 
 module.exports = {
-  getImage: () => {
+  getImage: async () => {
     const stillCamera = new StillCamera();
     const filename = `${new Date().getTime()}.jpg`;
+    const filePath = path.join(storePath, filename);
 
-    stillCamera.takeImage().then(image => {
-      fs.writeFileSync(path.join(imagePathDir, filename), image);
-    });
-    return filename;
+    let image = await stillCamera.takeImage();
+    fs.writeFileSync(filePath, image);
+
+    return fileUtil.getFileInfo(filePath);
   },
 
   getVideo: timeout => {

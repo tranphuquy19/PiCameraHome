@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var { getImage, getVideo } = require("../libs/camUtils");
+var { getImage, getVideo } = require("../libs/camUtil");
 
 module.exports = io => {
   io.on("connection", socket => {
@@ -9,15 +9,15 @@ module.exports = io => {
       payload: 123
     });
 
-    socket.on("clientSendDataObject", obj => {
+    socket.on("clientSendDataObject", async obj => {
       const { command, payload } = obj;
       switch (command) {
         case "GET_IMAGE":
-          const filename = getImage();
-          socket.emit("serverSendDataObject", {
+          const result = await getImage();
+          io.emit("serverSendDataObject", {
             command: "SEND_IMAGE",
             payload: {
-              filename
+              ...result
             }
           });
           break;

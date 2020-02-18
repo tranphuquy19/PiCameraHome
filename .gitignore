@@ -105,3 +105,8 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+
+# User data
+public/photos
+
+public/videos
