@@ -1,6 +1,13 @@
 #!/usr/bin/env node
 
 /**
+ * Config dotenv
+ */
+
+var dotenv = require('dotenv');
+dotenv.config();
+
+/**
  * Module dependencies.
  */
 
@@ -20,6 +27,12 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+
+/**
+ * SocketIO attach server
+ */
+var io = app.io;
+io.attach(server);
 
 /**
  * Listen on provided port, on all network interfaces.
