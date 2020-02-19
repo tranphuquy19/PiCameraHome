@@ -5,16 +5,16 @@ let objs = [];
 
 function getCardElement(element) {
   const { filename, birthtime, fromNow, filesize } = element;
-  let e = `<div class="col-md-3" id="${filename}">
+  let e = `<div class="col-md-2" id="${filename}" style="min-width:300px">
   <div class="card mb-4 box-shadow">
       <img class="card-img-top"
-          src="/imgs/${filename}?w=300&q=80"
+          src="/imgs/${filename}?w=300&q=80&b=2"
           alt="${filename}">
       <div class="card-body">
           <p class="card-text"><b>Tên file:</b> ${filename}</br><b>Ngày tạo:</b> ${birthtime}</br><b>Kích thước file:</b> ${filesize}</p>
           <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                  <a href="/imgs/${filename}" target="_blank" type="button" class="btn btn-sm btn-outline-primary">Xem</a>
+                  <a href="/imgs/${filename}?w=1000&q=100&b=2" target="_blank" type="button" class="btn btn-sm btn-outline-primary">Xem</a>
                   <button type="button" class="btn btn-sm btn-outline-danger">Xóa</button>
               </div>
               <small class="text-muted">${fromNow}</small>
