@@ -13,7 +13,7 @@
     "filesize": "^6.0.1",
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "morgan": "~1.9.1",
     "pi-camera-connect": "^0.2.0",
     "sharp": "^0.24.1",
